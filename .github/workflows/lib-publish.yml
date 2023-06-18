@@ -26,6 +26,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: https://npm.pkg.github.com/
+          scope: "@ismetkizgin"
+      - run: npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"
       - run: yarn install
       - run: yarn build
       - run: npm publish
